@@ -1,0 +1,27 @@
+<div>
+  <%= label_tag :name %>
+  <%= text_field_tag :name, @meeting.name %>
+</div>
+<div>
+  <%= label_tag :address %>
+  <%= text_field_tag :address, @meeting.address %>
+</div>
+<div>
+  <%= label_tag :start_time %>
+  <%= datetime_local_field_tag :start_time, @meeting.start_time.strftime("%Y-%m-%dT%H:%M") %>
+</div>
+<div>
+  <%= label_tag :end_time %>
+  <%= datetime_local_field_tag :end_time, @meeting.end_time.strftime("%Y-%m-%dT%H:%M") %>
+</div>
+<div>
+  <%= label_tag :notes %>
+  <%= text_area_tag :notes, @meeting.notes %>
+</div>
+<div>
+  <%= label_tag :tag_ids, "Tags" %>
+  <%= select_tag :tag_ids, options_from_collection_for_select(@tags, :id, :name, @meeting.tags.map {|tag| tag.id}), multiple: true %>
+</div>
+<div>
+  <%= submit_tag %>
+</div>

@@ -1,13 +1,19 @@
-<h1><a href="/meetings">All meetings</a></h1>
-<% @meetings.each do |meeting| %>
-  <h3><a href="/meetings/<%= meeting.id %>"><%= meeting.name %></a></h3>
-  <p>
-    Tags:
-    <% meeting.tags.each do |tag| %>
-      <a href="/meetings?tag=<%= tag.name %>"><%= tag.name %></a>  
+<div ng-app="app">
+  <div ng-controller="meetingsCtrl">
+      {{ message }}
+    <h1><a href="/meetings">All meetings</a></h1>
+    <h1><a href="/meetings/new">Create New Meeting</a></h1>
+    <% @meetings.each do |meeting| %>
+      <h3><a href="/meetings/<%= meeting.id %>"><%= meeting.name %></a></h3>
+      <p>
+        Tags:
+        <% meeting.tags.each do |tag| %>
+          <a href="/meetings?tag=<%= tag.name %>"><%= tag.name %></a>
+        <% end %>
+      </p>
+      <p>Address: <%= meeting.address %></p>
+      <p>Start time: <%= meeting.start_time %></p>
+      <p>End time: <%= meeting.end_time %></p>
     <% end %>
-  </p>
-  <p>Address: <%= meeting.address %></p>
-  <p>Start time: <%= meeting.start_time %></p>
-  <p>End time: <%= meeting.end_time %></p>
-<% end %>
+  </div>
+</div>
